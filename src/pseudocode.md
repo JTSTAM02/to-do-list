@@ -88,12 +88,24 @@
     // create new list item upon use of "Enter"
     - function createListItem
 
-    - function updateToDoItem
-    const updatedList = todoList.map((item) => {
-        if(item.id === itemId) {
-            return item;
-        } return updatedList;
-    })
+  // Create a new to-do item object with the user's input
+    -function handleAddItem() {
+  const newItem = {
+    id: generateUniqueId(),
+    title: newItemTitle,
+    completed: false,
+  };
+
+  // Update the to-do list state by adding the new item
+  setToDoList((prevToDoList) => [...prevToDoList, newItem]);
+
+  // Clear the input field
+  setNewItemTitle('');
+
+  // Save the updated to-do list to localStorage
+  saveToLocalStorage('toDoList', toDoList);
+}
+
 
     -function removeToDoItem (todoList, itemId) {
         const updatedList = todoList.filter((item) => item.id != itemId);
