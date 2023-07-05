@@ -44,11 +44,13 @@
     - How do I collect user input and store it into localStorage?
     - How do I add an option to add an item and x out an item dynamically once the user enters an item on their to do list?
     - How do I sort the data into different views while maintaining best practices? (DRY)
-    - What componenets do I need to create to ensure the project meets the requirements?
 
 
 ## Solutions
-    - 
+    - Create components to listen for user input
+    - Create components that generate a unique id for each to do list item
+    - Use .filter to sort through each view based upon user click
+
 
 ## Procedural
     ### BEGIN
@@ -56,10 +58,62 @@
 
         - Create React App
         - Create variable named toDoList to store list of to-do-items. 
+            * Start as an empty array (state)
+
+        - Create variable named newItem to store the value of a new item entered by the user
+            * Start as an empty string. (state)
+
+        - Create variable named View to keep track of current view.
+            * Start as "All"
+
+        - Create separate arrays to store the items for each view
+            * Examples: [allItems], [completedItems], [todoItems]
+            
+        - Create input field and button to allow user to enter their new to do list item.
+            * button will need event handler to dynamically create list item
+
         - Create function to handle creation of new items
-        - 
+            * function will include user input as a parameter
+        
+        - Create function to allow user to mark item as completed
+        - Create function to handle removal of item from list
+        - Create function to check off all items on list as completed
+        - Create a function that unchecks off all items on list as completed
+        - Create a function that generates a unique ID for a new list item
+        - Render these functions as components in React (conditional render based upon selected view)
+        -Apply Bootstrap layouts for responsiveness
 
 ## Functional
+    - function createToDoItem
+
+    - function updateToDoItem
+    const updatedList = todoList.map((item) => {
+        if(item.id === itemId) {
+            return item;
+        } return updatedList;
+    })
+
+    -function removeToDoItem (todoList, itemId) {
+        const updatedList = todoList.filter((item) => item.id != itemId);
+        return updatedList;
+    }
+
+    - function checkAllItems (todoList) {
+        const updatedList = todoList.map((item) => {
+            
+        })
+    }
+
+    -function uncheckAllItems (todoList) {
+        const updatedList = todoList.map((item) => {
+            return
+        })
+    }
+
+    -function generateId() {
+        return Math.random().toString()
+    }
+
 
 ## Object-Oriented
 
