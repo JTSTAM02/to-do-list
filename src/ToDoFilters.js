@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ToDoFilters({ view, changeView }) {
+export default function ToDoFilters({ view, changeView }) {
   return (
     <div>
       <button onClick={() => changeView('All')} disabled={view === 'All'}>
@@ -16,4 +16,3 @@ function ToDoFilters({ view, changeView }) {
   );
 }
 
-export default ToDoFilters;

@@ -1,7 +1,7 @@
 import React from "react";
-
+import './App.css';
 export function Header() {
     return(
-        <h1>todos</h1>
+        <h1>To Do List</h1>
     )
 }
