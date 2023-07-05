@@ -8,15 +8,16 @@ function ToDoInput({ addItem }) {
   }
 
   function HandleSubmit(event) {
-    event.preventDefault();
-    if(newItemTitle.trim() != '') {
+    event.preventDefault(); // prevents excessive page refresh
+    if(newItemTitle.trim() !== '') {
         const newItem = {
             id: generateUniqueId(),
             title: newItemTitle,
             completed: false
         };
         addItem(newItem);
-        setNewItemTitle('')
+        setNewItemTitle('') //clears the input field
+
     }
   }
 
@@ -25,7 +26,7 @@ function ToDoInput({ addItem }) {
       <input
         type="text"
         value={newItemTitle}
-        onChange={(event) => setNewItemTitle(event.target.value)}
+        onChange={(event) => setNewItemTitle(event.target.value)} // updates state by getting current value or the input field
         placeholder="Enter a new task..."
       />
       <button type="submit">Add</button>

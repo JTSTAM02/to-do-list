@@ -15,7 +15,7 @@ function ToDoItem({ item, toggleComplete, removeItem }) {
         {item.title} 
       </span>
 
-      <button style={{margin: 20}} onClick={() => removeItem(item.id)}>Remove Item</button>
+      <button style={{margin: '20px'}} onClick={() => removeItem(item.id)}>Remove Item</button>
     </li>
   );
 }
