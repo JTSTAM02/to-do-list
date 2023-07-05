@@ -80,11 +80,13 @@
         - Create function to check off all items on list as completed
         - Create a function that unchecks off all items on list as completed
         - Create a function that generates a unique ID for a new list item
+        - Create functions to save and get LocalStorage
         - Render these functions as components in React (conditional render based upon selected view)
         -Apply Bootstrap layouts for responsiveness
 
 ## Functional
-    - function createToDoItem
+    // create new list item upon use of "Enter"
+    - function createListItem
 
     - function updateToDoItem
     const updatedList = todoList.map((item) => {
@@ -114,7 +116,57 @@
         return Math.random().toString()
     }
 
+// function to get Items by View
+    -function getItemsByView(view) {
+  switch (view) {
+    case 'All':
+      return toDoList;
+    case 'Completed':
+      return toDoList.filter((item) => item.completed);
+    case 'To-Do':
+      return toDoList.filter((item) => !item.completed);
+    default:
+      return toDoList;
+  }
+}
+
+
+    -function saveToLocalStorage (key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+    }
+
+    -function getLocalStorage(key) {
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : null;
+    }
+
 
 ## Object-Oriented
 
+
+
 ## React
+
+### Components
+- export function createListItem ({ toDoItems }) {
+    return(
+        <ul>
+            {toDoItems.map(({id, content, complete}) => (
+                <Item id={id}> content= {content} complete={complete}/>
+
+            ))}
+        </ul>
+    );
+}
+
+// saves to Local Storage
+- export function saveToLocalStorage = (storageKey, storageValue) => {
+    localStorage.setItem(storageKey, JSON.stringify(storageValue))
+
+
+};
+
+
+### State
+// need to set State
+- const [setItem, setnewItem] = useState(saveToLocalStorage('item') || []);
