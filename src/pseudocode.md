@@ -28,6 +28,10 @@
     - Header as atom
     - Input field as molecule
     - To Do List as organism
+        *Within To Do List, many molecules such as :
+            - ToDoItem: represents single item, must have title and checkbox for complete and an x button to delete
+            - ToDoInput: for user input, includes input field
+            - ToDoFilters: allows user to switch between different views
 
 
 ## User Stories
@@ -88,12 +92,24 @@
     // create new list item upon use of "Enter"
     - function createListItem
 
-    - function updateToDoItem
-    const updatedList = todoList.map((item) => {
-        if(item.id === itemId) {
-            return item;
-        } return updatedList;
-    })
+  // Create a new to-do item object with the user's input
+    -function handleAddItem() {
+  const newItem = {
+    id: generateUniqueId(),
+    title: newItemTitle,
+    completed: false,
+  };
+
+  // Update the to-do list state by adding the new item
+  setToDoList((prevToDoList) => [...prevToDoList, newItem]);
+
+  // Clear the input field
+  setNewItemTitle('');
+
+  // Save the updated to-do list to localStorage
+  saveToLocalStorage('toDoList', toDoList);
+}
+
 
     -function removeToDoItem (todoList, itemId) {
         const updatedList = todoList.filter((item) => item.id != itemId);
@@ -148,6 +164,15 @@
 ## React
 
 ### Components
+
+#### List of Necessary React Componenets
+    - App
+    - Header- shows title-header
+    - ToDoList- displays items of to do list
+    - ToDoItem- represents single item
+    - ToDoInput- handles user input
+    -ToDoFilters- displays various view options (All, Completed, To-Do)
+
 - export function createListItem ({ toDoItems }) {
     return(
         <ul>
@@ -170,3 +195,7 @@
 ### State
 // need to set State
 - const [setItem, setnewItem] = useState(saveToLocalStorage('item') || []);
+
+    -toDoList: each item stored
+    -newItem: stores user input
+    -view: stores current view
