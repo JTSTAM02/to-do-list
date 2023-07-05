@@ -28,6 +28,10 @@
     - Header as atom
     - Input field as molecule
     - To Do List as organism
+        *Within To Do List, many molecules such as :
+            - ToDoItem: represents single item, must have title and checkbox for complete and an x button to delete
+            - ToDoInput: for user input, includes input field
+            - ToDoFilters: allows user to switch between different views
 
 
 ## User Stories
@@ -160,6 +164,15 @@
 ## React
 
 ### Components
+
+#### List of Necessary React Componenets
+    - App
+    - Header- shows title-header
+    - ToDoList- displays items of to do list
+    - ToDoItem- represents single item
+    - ToDoInput- handles user input
+    -ToDoFilters- displays various view options (All, Completed, To-Do)
+
 - export function createListItem ({ toDoItems }) {
     return(
         <ul>
@@ -182,3 +195,7 @@
 ### State
 // need to set State
 - const [setItem, setnewItem] = useState(saveToLocalStorage('item') || []);
+
+    -toDoList: each item stored
+    -newItem: stores user input
+    -view: stores current view
