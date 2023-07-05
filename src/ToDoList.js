@@ -6,6 +6,7 @@ import ToDoFilters from './ToDoFilters';
 export function ToDoList() {
   const [toDoList, setToDoList] = useState([]);
   const [view, setView] = useState('All');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   function addItem(newItem) {
     setToDoList((prevToDoList) => [...prevToDoList, newItem]);
@@ -58,20 +59,27 @@ export function ToDoList() {
   return (
     <div>
       <ToDoInput addItem={addItem} />
-      <ToDoFilters view={view} changeView={setView} />
-      <ul>
-        {getItemsByView().map((item) => (
-          <ToDoItem
-            key={item.id}
-            item={item}
-            toggleComplete={toggleComplete}
-            removeItem={removeItem}
-          />
-        ))}
-      </ul>
-      <p>{remainingItemsCount} items remaining</p>
-      <button onClick={completeAllItems}>Complete All</button>
-      <button onClick={activateAllItems}>Activate All</button>
+      <button onClick={() => setDropdownOpen(!dropdownOpen)}>
+        {dropdownOpen ? '▲' : '▼'}
+      </button>
+      {dropdownOpen && (
+        <>
+          <ToDoFilters view={view} changeView={setView} />
+          <ul>
+            {getItemsByView().map((item) => (
+              <ToDoItem
+                key={item.id}
+                item={item}
+                toggleComplete={toggleComplete}
+                removeItem={removeItem}
+              />
+            ))}
+          </ul>
+          <p>{remainingItemsCount} items remaining</p>
+          <button onClick={completeAllItems}>Complete All</button>
+          <button onClick={activateAllItems}>Activate All</button>
+        </>
+      )}
     </div>
   );
 }
