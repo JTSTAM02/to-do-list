@@ -15,7 +15,7 @@ export default function ToDoItem({ item, toggleComplete, removeItem }) {
         {item.title} 
       </span>
 
-      <button style={{margin: '20px'}} onClick={() => removeItem(item.id)}><i class="bi bi-x-square-fill"></i></button>
+      <button style={{margin: '20px'}} onClick={() => removeItem(item.id)}><i className="bi bi-x-square-fill"></i></button>
     </li>
   );
 }

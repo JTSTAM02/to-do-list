@@ -14,22 +14,30 @@ export default function ToDoList() { // state variables
   useEffect(() => {
     // Load items 
     const savedItems = localStorage.getItem("todoItems");
-    if (savedItems.length !== null && savedItems.length > 0) {
+    if (savedItems !== null && savedItems.length > 0) {
       setToDoList(JSON.parse(savedItems)); //turns data into a string
     }
   }, []);
 
   useEffect(() => {
+    // Load items from local storage
+    const savedItems = localStorage.getItem("todoItems");
+    if (savedItems !== null && savedItems.length > 0) {
+      setToDoList(JSON.parse(savedItems));
+    }
+  }, []);
+  
+  useEffect(() => {
     // Save items to local storage whenever the to-do list changes
-    if(toDoList.length > 0) {
-    localStorage.setItem("todoItems", JSON.stringify(toDoList));
+    if (toDoList!== null && toDoList.length > 0) {
+      localStorage.setItem("todoItems", JSON.stringify(toDoList));
     }
   }, [toDoList]);
-
-  // add item to to do list
+  
   function addItem(newItem) {
     setToDoList((prevToDoList) => [...prevToDoList, newItem]);
   }
+  
 
   // switch view based upon user input of views (see ToDoFilters)
   function getItemsByView() {

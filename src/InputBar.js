@@ -36,7 +36,7 @@ export default function InputBar({ addItem }) {
         onKeyPress ={HandleSubmit}
         placeholder="What needs to be done...?"
       />
-      <button className='btn-primary' type="button" onClick={HandleSubmit}>Add</button>
+      <button className='btn btn-primary' type="button" onClick={HandleSubmit}>Add</button>
     </div>
     </div>
   );
