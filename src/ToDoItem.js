@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-function ToDoItem({ item, toggleComplete, removeItem }) {
+export default function ToDoItem({ item, toggleComplete, removeItem }) {
 
   return (
     <li style={{ display: "flex", alignItems: "center", marginBottom: "10px",}}>
@@ -19,5 +19,3 @@ function ToDoItem({ item, toggleComplete, removeItem }) {
     </li>
   );
 }
-
-export default ToDoItem;

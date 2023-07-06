@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// functionality for input bar
 function ToDoInput({ addItem }) {
   const [newItemTitle, setNewItemTitle] = useState('');
 
@@ -20,13 +21,13 @@ function ToDoInput({ addItem }) {
 
     }
   }
-
+// displays input bar and Add button
   return (
     <form onSubmit={HandleSubmit}>
       <input
         type="text"
         value={newItemTitle}
-        onChange={(event) => setNewItemTitle(event.target.value)} // updates state by getting current value or the input field
+        onChange={(e) => setNewItemTitle(e.target.value)} // updates state by getting current value or the input field
         placeholder="Enter a new task..."
       />
       <button type="submit">Add</button>

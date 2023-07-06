@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function ToDoFilters({ view, changeView }) { // state
+  
   return (
     <div>
       <button onClick={() => changeView('All')} disabled={view === 'All'}> {/* onClick triggers the changeView paramter and disabled is used to show button cannot be clicked again   */}
