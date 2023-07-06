@@ -1,21 +1,21 @@
 import React from 'react';
-
-function ToDoItem({ item, toggleComplete, removeItem }) {
-  const { id, title, completed } = item;
+import './App.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+export default function ToDoItem({ item, toggleComplete, removeItem }) {
 
   return (
-    <li>
+    <li style={{display:'block', marginBottom: "5px",}}>
       <input
-        type="checkbox"
-        checked={completed}
-        onChange={() => toggleComplete(id)}
+        type="checkbox" 
+        checked={item.completed} // determines if checkbox is checked or not
+        onChange={() => toggleComplete(item.id)} // changes the state of the list item as either complete or incomplete
       />
-      <span style={{ textDecoration: completed ? 'line-through' : 'none' }}>
-        {title}
+      
+      <span style={{ fontSize: '30px', textDecoration: item.completed ? 'line-through' : 'none', marginLeft: "5px", marginRight: '5px' }}> 
+        {item.title} 
       </span>
-      <button onClick={() => removeItem(id)}>Remove</button>
+
+      <button style={{margin: '20px'}} onClick={() => removeItem(item.id)}><i class="bi bi-x-square-fill"></i></button>
     </li>
   );
 }
-
-export default ToDoItem;

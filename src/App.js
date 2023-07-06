@@ -1,9 +1,10 @@
 import React from 'react';
 import { Header } from './Header';
+import ToDoList from './ToDoList';
 import './App.css';
-import { ToDoList } from './ToDoList';
 
-function App() {
+
+export default function App() {
   return (
     <>
       <Header />
@@ -11,5 +12,3 @@ function App() {
     </>
   );
 }
-
-export default App;
