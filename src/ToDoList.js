@@ -14,7 +14,7 @@ export default function ToDoList() { // state variables
   useEffect(() => {
     // Load items 
     const savedItems = localStorage.getItem("todoItems");
-    if (savedItems.length > 0) {
+    if (savedItems.length !== null && savedItems.length > 0) {
       setToDoList(JSON.parse(savedItems)); //turns data into a string
     }
   }, []);
