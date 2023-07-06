@@ -10,14 +10,6 @@ export default function ToDoList() { // state variables
   const [view, setView] = useState('All');
   const [listCollapsed, setListCollapsed] = useState(false);
   
-  
-  useEffect(() => {
-    // Load items 
-    const savedItems = localStorage.getItem("todoItems");
-    if (savedItems !== null && savedItems.length > 0) {
-      setToDoList(JSON.parse(savedItems)); //turns data into a string
-    }
-  }, []);
 
   useEffect(() => {
     // Load items from local storage
