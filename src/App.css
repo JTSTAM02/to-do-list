@@ -1,24 +1,16 @@
 body{
   text-align: center;
-  height: 80vh;
   background-color: silver;
+  margin-top: 50px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
-button {
-  font-size: 14px;
-  border-color: white;
-}
-
-
-
-.btn-custom {
-  border-color: white;
+.btn-primary {
+  border-radius: 50%;
 }
 
 h1 {
-  font-size: 100px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+  font-size: 80px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

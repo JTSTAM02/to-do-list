@@ -9,6 +9,7 @@ export default function InputBar({ addItem }) {
   }
 
   function HandleSubmit(event) {
+    if(event.key === "Enter") {
     event.preventDefault(); // prevents excessive page refresh
     if(newItemTitle.trim() !== '') {
         const newItem = {
@@ -18,15 +19,10 @@ export default function InputBar({ addItem }) {
         };
         addItem(newItem);
         setNewItemTitle('') //clears the input field
-
+      }
     }
   }
 
-  function HandleKeyPress(event) {
-    if(event.key === 'Enter') {
-      HandleSubmit(event)
-    }
-  }
 
 // displays input bar and Add button
   return (
@@ -37,8 +33,8 @@ export default function InputBar({ addItem }) {
         className='form-control'
         value={newItemTitle}
         onChange={(e) => setNewItemTitle(e.target.value)} // updates state by getting current value or the input field
-        onKeyPress={HandleKeyPress}
-        placeholder="Enter a new task..."
+        onKeyPress ={HandleSubmit}
+        placeholder="What needs to be done...?"
       />
       <button className='btn-primary' type="button" onClick={HandleSubmit}>Add</button>
     </div>

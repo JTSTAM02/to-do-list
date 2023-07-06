@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import ToDoItem from './ToDoItem';
 import InputBar from './InputBar';
 import ToDoFilters from './ToDoFilters';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 
@@ -89,7 +88,7 @@ export default function ToDoList() { // state variables
       <div className='col-lg-6'>
       <InputBar addItem={addItem} />
       <button onClick={() => setListCollapsed(!listCollapsed)}>
-        {listCollapsed ? '▲' : '▼'}
+        {listCollapsed ? '⬆' : '⬇'}
       </button>
       {!listCollapsed && (
         <>
@@ -105,10 +104,13 @@ export default function ToDoList() { // state variables
           </ul>
         </>
       )}
-      <p>{remainingItemsCount} items remaining</p>
-          <ToDoFilters view={view} changeView={setView} />
-          <button className='btn-custom' onClick={completeAllItems}>Complete All</button>
-          <button className='btn-custom' onClick={activateAllItems}>Activate All</button>
+      <hr />
+      <div className=' align-items-center'>
+      <p className='m-3'>{remainingItemsCount} items remaining</p>
+      <ToDoFilters view={view} changeView={setView} />
+          <button className='btn btn-primary shadow m-2' onClick={completeAllItems}>Complete All</button>
+          <button className='btn btn-primary shadow' onClick={activateAllItems}>Activate All</button>
+      </div>
       </div>
       </div>
       </div>
