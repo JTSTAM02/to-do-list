@@ -4,14 +4,14 @@ import './App.css';
 export default function ToDoItem({ item, toggleComplete, removeItem }) {
 
   return (
-    <li style={{ display: "flex", alignItems: "center", marginBottom: "10px",}}>
+    <li style={{display:'block', marginBottom: "5px",}}>
       <input
-        type="checkbox"
+        type="radio"
         checked={item.completed} // determines if checkbox is checked or not
         onChange={() => toggleComplete(item.id)} // changes the state of the list item as either complete or incomplete
       />
       
-      <span style={{ textDecoration: item.completed ? 'line-through' : 'none', marginLeft: "10 px" }}> 
+      <span style={{ fontSize: '30px', textDecoration: item.completed ? 'line-through' : 'none', marginLeft: "5px", marginRight: '5px' }}> 
         {item.title} 
       </span>
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // functionality for input bar
-function ToDoInput({ addItem }) {
+export default function InputBar({ addItem }) {
   const [newItemTitle, setNewItemTitle] = useState('');
 
   function generateUniqueId() {
@@ -21,18 +21,28 @@ function ToDoInput({ addItem }) {
 
     }
   }
+
+  function HandleKeyPress(event) {
+    if(event.key === 'Enter') {
+      HandleSubmit(event)
+    }
+  }
+
 // displays input bar and Add button
   return (
-    <form onSubmit={HandleSubmit}>
+    <div>
+    <div className='input-group mb-3'>
       <input
         type="text"
+        className='form-control'
         value={newItemTitle}
         onChange={(e) => setNewItemTitle(e.target.value)} // updates state by getting current value or the input field
+        onKeyPress={HandleKeyPress}
         placeholder="Enter a new task..."
       />
-      <button type="submit">Add</button>
-    </form>
+      <button className='btn-primary' type="button" onClick={HandleSubmit}>Add</button>
+    </div>
+    </div>
   );
 }
 
-export default ToDoInput;

@@ -2,24 +2,30 @@ import React, { useEffect, useState } from 'react';
 import ToDoItem from './ToDoItem';
 import InputBar from './InputBar';
 import ToDoFilters from './ToDoFilters';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+
 
 export default function ToDoList() { // state variables
   const [toDoList, setToDoList] = useState([]);
   const [view, setView] = useState('All');
   const [listCollapsed, setListCollapsed] = useState(false);
   
-  useEffect(() => {
-    // Save items to local storage whenever the to-do list changes
-    localStorage.setItem('todoItems', JSON.stringify(toDoList));
-  }, [toDoList]);
   
   useEffect(() => {
     // Load items 
-    const savedItems = localStorage.getItem('todoItems');
-    if (savedItems) {
+    const savedItems = localStorage.getItem("todoItems");
+    if (savedItems.length > 0) {
       setToDoList(JSON.parse(savedItems)); //turns data into a string
     }
-  }, []); //empty array needed to avoid multiple renders
+  }, []);
+
+  useEffect(() => {
+    // Save items to local storage whenever the to-do list changes
+    if(toDoList.length > 0) {
+    localStorage.setItem("todoItems", JSON.stringify(toDoList));
+    }
+  }, [toDoList]);
 
   // add item to to do list
   function addItem(newItem) {
@@ -78,7 +84,9 @@ export default function ToDoList() { // state variables
 
   // displays necessary componenets 
   return (
-    <div>
+    <div className='container'>
+    <div className='row justify-content-center'>
+      <div className='col-lg-6'>
       <InputBar addItem={addItem} />
       <button onClick={() => setListCollapsed(!listCollapsed)}>
         {listCollapsed ? '▲' : '▼'}
@@ -99,10 +107,11 @@ export default function ToDoList() { // state variables
       )}
       <p>{remainingItemsCount} items remaining</p>
           <ToDoFilters view={view} changeView={setView} />
-          <button onClick={completeAllItems}>Complete All</button>
-          <button onClick={activateAllItems}>Activate All</button>
+          <button className='btn-custom' onClick={completeAllItems}>Complete All</button>
+          <button className='btn-custom' onClick={activateAllItems}>Activate All</button>
       </div>
-      
+      </div>
+      </div>
   );
 }
 
