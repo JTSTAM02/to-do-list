@@ -105,7 +105,7 @@ export default function ToDoList() { // state variables
         </>
       )}
       <hr />
-      <div className=' align-items-center'>
+      <div className='align-items-center'>
       <p className='m-3'>{remainingItemsCount} items remaining</p>
       <ToDoFilters view={view} changeView={setView} />
           <button className='btn btn-primary shadow m-2' onClick={completeAllItems}>Complete All</button>
