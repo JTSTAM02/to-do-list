@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 export default function InputBar({ addItem }) {
   const [newItemTitle, setNewItemTitle] = useState('');
 
+  // needed for local storage
   function generateUniqueId() {
     return Math.random().toString();
   }
@@ -33,10 +34,10 @@ export default function InputBar({ addItem }) {
         className='form-control'
         value={newItemTitle}
         onChange={(e) => setNewItemTitle(e.target.value)} // updates state by getting current value or the input field
-        onKeyPress ={HandleSubmit}
+        onKeyDown ={HandleSubmit}
         placeholder="What needs to be done...?"
       />
-      <button className='btn btn-primary' type="button" onClick={HandleSubmit}>Add</button>
+      <button id='additem' className='btn btn-primary' type="button" onClick={HandleSubmit}>Add</button>
     </div>
     </div>
   );
